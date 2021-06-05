@@ -1,6 +1,8 @@
 # Don't Open It
 
-WIP
+**WORK IN PROGRESS**
+
+Prevent to launch specific app when you are not in working time.
 
 ## License
 
