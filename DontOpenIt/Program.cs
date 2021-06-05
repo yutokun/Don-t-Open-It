@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProcessWatcher;
 
@@ -14,6 +16,8 @@ namespace DontOpenIt
             After
         }
 
+        static readonly List<string> Confirming = new List<string>();
+
         public static void Main(string[] args)
         {
             var watchdog = new Watchdog();
@@ -22,17 +26,29 @@ namespace DontOpenIt
             Console.ReadLine();
         }
 
-        static void OnProcessCreated(Process process)
+        static async void OnProcessCreated(Process process)
         {
             Console.WriteLine(process.ProcessName);
             if (process.ProcessName == "Slack")
             {
-                var timeFrame = GetTimeFrame();
-                if (timeFrame != TimeFrame.Working)
+                if (Confirming.Contains(process.ProcessName)) return;
+                Confirming.Add(process.ProcessName);
+
+                await Task.Run(() =>
                 {
-                    var yes = ConfirmOpen(timeFrame, process.ProcessName);
-                    if (!yes) process.Kill();
-                }
+                    var timeFrame = GetTimeFrame();
+                    if (timeFrame != TimeFrame.Working)
+                    {
+                        var yes = ConfirmOpen(timeFrame, process.ProcessName);
+                        if (!yes)
+                        {
+                            var processes = Process.GetProcessesByName(process.ProcessName);
+                            foreach (var p in processes) p.Kill();
+                        }
+
+                        Confirming.Remove(process.ProcessName);
+                    }
+                });
             }
         }
 
