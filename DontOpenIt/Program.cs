@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProcessWatcher;
@@ -9,6 +11,12 @@ namespace DontOpenIt
 {
     internal class Program
     {
+        [DllImport("kernel32.dll")]
+        static extern IntPtr GetConsoleWindow();
+
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         enum TimeFrame
         {
             Before,
@@ -20,10 +28,30 @@ namespace DontOpenIt
 
         public static void Main(string[] args)
         {
+            ShowWindow(GetConsoleWindow(), 0);
+            CreateNotifyIcon();
+
             var watchdog = new Watchdog();
             watchdog.Attach(OnProcessCreated, out _);
             watchdog.Run();
-            Console.ReadLine();
+            Application.Run();
+        }
+
+        static void CreateNotifyIcon()
+        {
+            var icon = new NotifyIcon();
+            icon.Icon = Icon.FromHandle(GetConsoleWindow());
+            icon.Text = "Don't Open It";
+            icon.Visible = true;
+
+            var menu = new ContextMenuStrip();
+
+            var exit = new ToolStripMenuItem();
+            exit.Text = "&Exit";
+            exit.Click += (s, a) => Application.Exit();
+
+            menu.Items.Add(exit);
+            icon.ContextMenuStrip = menu;
         }
 
         static async void OnProcessCreated(Process process)
