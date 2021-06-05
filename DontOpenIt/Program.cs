@@ -44,12 +44,31 @@ namespace DontOpenIt
             icon.Text = "Don't Open It";
             icon.Visible = true;
 
-            var menu = new ContextMenuStrip();
+            var startup = new ToolStripMenuItem();
+            startup.Text = "Launch on login";
+            startup.CheckOnClick = true;
+            startup.Checked = IsRegistered();
+            startup.CheckedChanged += (s, a) =>
+            {
+                if (startup.Checked)
+                {
+                    RegisterStartup();
+                }
+                else
+                {
+                    UnregisterStartup();
+                }
+            };
+
+            var separator = new ToolStripSeparator();
 
             var exit = new ToolStripMenuItem();
             exit.Text = "&Exit";
             exit.Click += (s, a) => Application.Exit();
 
+            var menu = new ContextMenuStrip();
+            menu.Items.Add(startup);
+            menu.Items.Add(separator);
             menu.Items.Add(exit);
             icon.ContextMenuStrip = menu;
         }
@@ -131,6 +150,28 @@ namespace DontOpenIt
                     MessageBoxOptions.DefaultDesktopOnly
                 );
             }
+        }
+
+        static void RegisterStartup()
+        {
+            var registry = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            registry.SetValue(Application.ProductName, Application.ExecutablePath);
+            registry.Close();
+        }
+
+        static void UnregisterStartup()
+        {
+            var registry = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            registry.DeleteValue(Application.ProductName);
+            registry.Close();
+        }
+
+        static bool IsRegistered()
+        {
+            var registry = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            var isRegistered = registry.GetValue(Application.ProductName);
+            registry.Close();
+            return isRegistered != null;
         }
     }
 }
