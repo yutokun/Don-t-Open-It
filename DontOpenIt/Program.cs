@@ -114,11 +114,23 @@ namespace DontOpenIt
                     throw new ArgumentOutOfRangeException(nameof(timeFrame), timeFrame, null);
             }
 
-            var result = MessageBox.Show($"{name} を開きましたね？ {message}", "Don't Open It", MessageBoxButtons.YesNo);
+            var result = ShowMessage($"{name} を開きましたね？ {message}", "Don't Open It");
             if (result == DialogResult.No) return false;
-            result = MessageBox.Show("本当に良いんですね？ 他にやることはないの？", "Don't Open It!!!", MessageBoxButtons.YesNo);
+            result = MessageBox.Show("本当に良いんですね？ 他にやることはないの？", "Don't Open It!!!");
             if (result == DialogResult.No) return false;
             return true;
+
+            DialogResult ShowMessage(string body, string caption)
+            {
+                return MessageBox.Show(
+                    body,
+                    caption,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.None,
+                    MessageBoxDefaultButton.Button2,
+                    MessageBoxOptions.DefaultDesktopOnly
+                );
+            }
         }
     }
 }
