@@ -40,7 +40,7 @@ namespace DontOpenIt
         static void CreateNotifyIcon()
         {
             var icon = new NotifyIcon();
-            icon.Icon = Icon.FromHandle(GetConsoleWindow());
+            icon.Icon = new Icon("./icon.ico");
             icon.Text = "Don't Open It";
             icon.Visible = true;
 
