@@ -32,11 +32,11 @@ namespace DontOpenIt
             var now = DateTime.Now.TimeOfDay;
 
             var timeMessage = "";
-            if (now < TimeSpan.FromHours(p.begin))
+            if (TimeSpan.FromHours(4) <= now && now < TimeSpan.FromHours(p.begin))
             {
                 timeMessage = $"{p.begin}時より早いです。";
             }
-            else if (now > TimeSpan.FromHours(p.end))
+            else if (TimeSpan.FromHours(4) > now || now > TimeSpan.FromHours(p.end))
             {
                 timeMessage = $"{p.end}時を過ぎています。";
             }
