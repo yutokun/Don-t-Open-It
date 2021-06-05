@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontOpenIt", "DontOpenIt\DontOpenIt.csproj", "{F1660C32-A0BA-4FE5-867D-53C801273C1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessWatcher", "ProcessWatcher\ProcessWatcher.csproj", "{B8E276F7-E77B-469A-8578-486ACF27FA62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{F1660C32-A0BA-4FE5-867D-53C801273C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1660C32-A0BA-4FE5-867D-53C801273C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1660C32-A0BA-4FE5-867D-53C801273C1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E276F7-E77B-469A-8578-486ACF27FA62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E276F7-E77B-469A-8578-486ACF27FA62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E276F7-E77B-469A-8578-486ACF27FA62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E276F7-E77B-469A-8578-486ACF27FA62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
