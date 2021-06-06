@@ -187,7 +187,7 @@
     <value>124, 20</value>
   </data>
   <data name="processes.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;processes.Name" xml:space="preserve">
     <value>processes</value>
