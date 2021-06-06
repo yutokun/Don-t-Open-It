@@ -60,20 +60,12 @@ namespace DontOpenIt
 
         static bool ConfirmOpen(TimeFrame timeFrame, string name)
         {
-            string message;
-            switch (timeFrame)
+            var message = timeFrame switch
             {
-                case TimeFrame.Before:
-                    message = "9時になっていませんがよろしいですか？";
-                    break;
-
-                case TimeFrame.After:
-                    message = "20時を過ぎていますがよろしいですか？";
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(timeFrame), timeFrame, null);
-            }
+                TimeFrame.Before => "9時になっていませんがよろしいですか？",
+                TimeFrame.After => "20時を過ぎていますがよろしいですか？",
+                _ => throw new ArgumentOutOfRangeException(nameof(timeFrame), timeFrame, null)
+            };
 
             var result = ShowMessage($"{name} を開きましたね？ {message}", "Don't Open It");
             if (result == DialogResult.No) return false;
