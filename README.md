@@ -4,6 +4,21 @@
 
 Prevent to launch specific app when you are not in working time.
 
+![](doc/message.png)
+
+## Usage
+
+This app is in notification area. You could add apps to observe.
+
+![](doc/tray.png)
+
+![](doc/settings.png)
+
+## Localize
+
+- Japanese
+- English
+
 ## License
 
 ### ProcessWatcher
