@@ -57,7 +57,6 @@ namespace DontOpenIt
             // processes
             // 
             this.processes.DropDownHeight = 800;
-            this.processes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.processes.FormattingEnabled = true;
             resources.ApplyResources(this.processes, "processes");
             this.processes.Name = "processes";
