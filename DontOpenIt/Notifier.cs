@@ -28,7 +28,10 @@ namespace DontOpenIt
                 }
             };
 
-            var separator = new ToolStripSeparator();
+            var mute = new ToolStripMenuItem();
+            mute.Text = "ミュート";
+            mute.CheckOnClick = true;
+            mute.CheckedChanged += (s, a) => Program.Mute = mute.Checked;
 
             var exit = new ToolStripMenuItem();
             exit.Text = "&Exit";
@@ -36,7 +39,9 @@ namespace DontOpenIt
 
             var menu = new ContextMenuStrip();
             menu.Items.Add(startup);
-            menu.Items.Add(separator);
+            menu.Items.Add(new ToolStripSeparator());
+            menu.Items.Add(mute);
+            menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(exit);
             icon.ContextMenuStrip = menu;
         }

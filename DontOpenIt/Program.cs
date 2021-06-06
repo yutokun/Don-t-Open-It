@@ -18,6 +18,7 @@ namespace DontOpenIt
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         static readonly List<string> Confirming = new List<string>();
+        public static bool Mute;
 
         public static void Main(string[] args)
         {
@@ -34,6 +35,7 @@ namespace DontOpenIt
 
         static async void OnProcessCreated(Process process)
         {
+            if (Mute) return;
             Console.WriteLine(process.ProcessName);
             if (process.ProcessName == "Slack")
             {
