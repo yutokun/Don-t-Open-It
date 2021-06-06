@@ -9,6 +9,8 @@ namespace DontOpenIt
     {
         readonly SettingsWindow settings;
 
+        static readonly string[] ExcludedProcesses = { "svchost", "ApplicationFrameworkHost", "audiodg", "BtwRSupportService", "conhost", "csrss", "dllhost", "fontdrvhost", "MSBuild", "MsMpEng", "secd", "sihost", "System", "SystemSettings", "wininit", "winlogon", "WUDFHost" };
+
         public AddDialog(SettingsWindow parent)
         {
             settings = parent;
@@ -20,6 +22,8 @@ namespace DontOpenIt
             var currentProcesses = Process.GetProcesses()
                                           .Select(p => p.ProcessName)
                                           .Distinct()
+                                          .Except(ExcludedProcesses)
+                                          .Except(Settings.TargetApps)
                                           .ToArray();
             processes.Items.Clear();
             processes.Items.AddRange(currentProcesses);
