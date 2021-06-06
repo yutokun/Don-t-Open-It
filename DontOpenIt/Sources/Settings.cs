@@ -61,9 +61,8 @@ namespace DontOpenIt
 
         static void Create()
         {
-            Data = new Definition { BeginHour = 9, EndHour = 20 };
+            Data = new Definition { BeginHour = 9, EndHour = 17 };
             Data.AddTarget("Slack", KillMethod.Kill);
-            Data.AddTarget("Unity Hub", KillMethod.CloseMainWindow);
             Save();
         }
 
