@@ -63,13 +63,13 @@ namespace DontOpenIt
         {
             var message = timeFrame switch
             {
-                TimeFrame.Before => "9時になっていませんがよろしいですか？",
-                TimeFrame.After => "20時を過ぎていますがよろしいですか？",
+                TimeFrame.Before => Localizer.BeforeWorkingTime(9),
+                TimeFrame.After => Localizer.AfterWorkingTime(20),
                 TimeFrame.Holiday => Messages.holiday,
                 _ => throw new ArgumentOutOfRangeException(nameof(timeFrame), timeFrame, null)
             };
 
-            var result = ShowMessage($"{name} を開きましたね？ {message}", "Don't Open It");
+            var result = ShowMessage($"{Localizer.DidYouOpenApp(name)} {message}", "Don't Open It");
             if (result == DialogResult.No) return false;
             result = ShowMessage(Messages.finalCheck, "Don't Open It!!!");
             if (result == DialogResult.No) return false;

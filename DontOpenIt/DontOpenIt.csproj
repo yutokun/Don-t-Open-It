@@ -43,6 +43,7 @@
         <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Localizer.cs" />
         <Compile Include="Messages.Designer.cs">
           <DesignTime>True</DesignTime>
           <AutoGen>True</AutoGen>
