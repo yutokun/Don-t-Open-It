@@ -43,24 +43,24 @@
         <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="KillMethod.cs" />
-        <Compile Include="Localizer.cs" />
         <Compile Include="Messages.Designer.cs">
           <DesignTime>True</DesignTime>
           <AutoGen>True</AutoGen>
           <DependentUpon>Messages.resx</DependentUpon>
         </Compile>
-        <Compile Include="Notifier.cs" />
-        <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Resources.Designer.cs">
           <DesignTime>True</DesignTime>
           <AutoGen>True</AutoGen>
           <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
-        <Compile Include="Settings.cs" />
-        <Compile Include="Startup.cs" />
-        <Compile Include="Time.cs" />
+        <Compile Include="Sources\KillMethod.cs" />
+        <Compile Include="Sources\Localizer.cs" />
+        <Compile Include="Sources\Notifier.cs" />
+        <Compile Include="Sources\Program.cs" />
+        <Compile Include="Sources\Settings.cs" />
+        <Compile Include="Sources\Startup.cs" />
+        <Compile Include="Sources\Time.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\ProcessWatcher\ProcessWatcher.csproj">
@@ -69,7 +69,6 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
-      <EmbeddedResource Include="Default.ico" />
       <EmbeddedResource Include="Messages.ja-jp.resx">
         <DependentUpon>Messages.resx</DependentUpon>
       </EmbeddedResource>
@@ -77,7 +76,6 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>Messages.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Include="Muted.ico" />
       <EmbeddedResource Include="Resources.ja-jp.resx">
         <DependentUpon>Resources.resx</DependentUpon>
       </EmbeddedResource>
@@ -85,6 +83,8 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Include="Resources\Default.ico" />
+      <EmbeddedResource Include="Resources\Muted.ico" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

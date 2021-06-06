@@ -6,8 +6,8 @@ namespace DontOpenIt
     public static class Notifier
     {
         static Icon LoadIcon(string path) => new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(path));
-        static readonly Icon DefaultIcon = LoadIcon("DontOpenIt.Default.ico");
-        static readonly Icon MuteIcon = LoadIcon("DontOpenIt.Muted.ico");
+        static readonly Icon DefaultIcon = LoadIcon("DontOpenIt.Resources.Default.ico");
+        static readonly Icon MuteIcon = LoadIcon("DontOpenIt.Resources.Muted.ico");
 
         public static void Create()
         {
