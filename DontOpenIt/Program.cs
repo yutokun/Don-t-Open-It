@@ -65,6 +65,7 @@ namespace DontOpenIt
             {
                 TimeFrame.Before => "9時になっていませんがよろしいですか？",
                 TimeFrame.After => "20時を過ぎていますがよろしいですか？",
+                TimeFrame.Holiday => "週末ですがよろしいですか？",
                 _ => throw new ArgumentOutOfRangeException(nameof(timeFrame), timeFrame, null)
             };
 
