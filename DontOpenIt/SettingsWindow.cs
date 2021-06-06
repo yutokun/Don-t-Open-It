@@ -6,6 +6,7 @@ namespace DontOpenIt
     public partial class SettingsWindow : Form
     {
         static readonly SettingsWindow Instance = new SettingsWindow();
+        ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
 
         SettingsWindow()
         {
@@ -23,6 +24,10 @@ namespace DontOpenIt
             {
                 appList.Items.Add(new ListViewItem(new[] { target.Name, target.KillMethod.ToString() }));
             }
+
+            var delete = new ToolStripMenuItem();
+            delete.Text = Resources.remove;
+            contextMenuStrip.Items.Add(delete);
         }
 
         void beginTime_TextChanged(object sender, EventArgs e)
@@ -65,8 +70,18 @@ namespace DontOpenIt
             removeButton.Enabled = e.IsSelected;
         }
 
+        void appList_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip.Show(Cursor.Position);
+            }
+        }
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            if (e.CloseReason == CloseReason.ApplicationExitCall || e.CloseReason == CloseReason.WindowsShutDown) return;
+
             e.Cancel = true;
             Hide();
         }

@@ -26,4 +26,7 @@
     <data name="appName" xml:space="preserve">
         <value>アプリ名</value>
     </data>
+    <data name="remove" xml:space="preserve">
+        <value>削除</value>
+    </data>
 </root>

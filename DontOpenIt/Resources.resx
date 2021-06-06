@@ -33,4 +33,7 @@
     <data name="appName" xml:space="preserve">
         <value>App Name</value>
     </data>
+    <data name="remove" xml:space="preserve">
+        <value>Remove</value>
+    </data>
 </root>

@@ -99,6 +99,7 @@ namespace DontOpenIt
             this.appList.UseCompatibleStateImageBehavior = false;
             this.appList.View = System.Windows.Forms.View.Details;
             this.appList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.appList_ItemSelectionChanged);
+            this.appList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.appList_MouseClick);
             // 
             // name
             // 
