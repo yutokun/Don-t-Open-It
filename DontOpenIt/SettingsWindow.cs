@@ -27,6 +27,7 @@ namespace DontOpenIt
 
             var delete = new ToolStripMenuItem();
             delete.Text = Resources.remove;
+            delete.Click += removeButton_Click;
             contextMenuStrip.Items.Add(delete);
         }
 
