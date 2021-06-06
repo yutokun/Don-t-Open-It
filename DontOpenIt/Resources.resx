@@ -30,4 +30,7 @@
     <data name="settings" xml:space="preserve">
         <value>Settings...</value>
     </data>
+    <data name="appName" xml:space="preserve">
+        <value>App Name</value>
+    </data>
 </root>

@@ -81,6 +81,9 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
+      <EmbeddedResource Include="AddDialog.ja-jp.resx">
+        <DependentUpon>AddDialog.cs</DependentUpon>
+      </EmbeddedResource>
       <EmbeddedResource Include="AddDialog.resx">
         <DependentUpon>AddDialog.cs</DependentUpon>
       </EmbeddedResource>
@@ -100,6 +103,9 @@
       </EmbeddedResource>
       <EmbeddedResource Include="Resources\Default.ico" />
       <EmbeddedResource Include="Resources\Muted.ico" />
+      <EmbeddedResource Include="SettingsWindow.ja-jp.resx">
+        <DependentUpon>SettingsWindow.cs</DependentUpon>
+      </EmbeddedResource>
       <EmbeddedResource Include="SettingsWindow.resx">
         <DependentUpon>SettingsWindow.cs</DependentUpon>
       </EmbeddedResource>

@@ -61,6 +61,15 @@ namespace DontOpenIt {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App Name.
+        /// </summary>
+        internal static string appName {
+            get {
+                return ResourceManager.GetString("appName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         internal static string exit {

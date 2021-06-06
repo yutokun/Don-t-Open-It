@@ -122,7 +122,7 @@
     <value>12, 9</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 20</value>
+    <value>81, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
@@ -147,7 +147,7 @@
     <value>7</value>
   </data>
   <data name="beginTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 9</value>
+    <value>99, 9</value>
   </data>
   <data name="beginTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 19</value>
@@ -168,7 +168,7 @@
     <value>6</value>
   </data>
   <data name="endTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 34</value>
+    <value>99, 34</value>
   </data>
   <data name="endTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 19</value>
@@ -192,7 +192,7 @@
     <value>12, 34</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 20</value>
+    <value>81, 20</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -219,7 +219,7 @@
     <value>12, 59</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 20</value>
+    <value>81, 20</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -313,13 +313,13 @@
     <value>KillMethod</value>
   </data>
   <data name="killMethod.Width" type="System.Int32, mscorlib">
-    <value>106</value>
+    <value>107</value>
   </data>
   <data name="appList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 59</value>
+    <value>99, 59</value>
   </data>
   <data name="appList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 244</value>
+    <value>191, 244</value>
   </data>
   <data name="appList.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -343,7 +343,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>290, 315</value>
+    <value>302, 315</value>
   </data>
   <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 15</value>

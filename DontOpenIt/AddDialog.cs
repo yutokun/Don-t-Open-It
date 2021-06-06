@@ -15,7 +15,7 @@ namespace DontOpenIt
 
         void AddDialog_Load(object sender, EventArgs e)
         {
-            name.Text = "App Name";
+            name.Text = Resources.appName;
             killMethod.SelectedIndex = 0;
         }
 
