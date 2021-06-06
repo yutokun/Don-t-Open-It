@@ -20,4 +20,7 @@
     <data name="Mute" xml:space="preserve">
         <value>ミュート</value>
     </data>
+    <data name="settings" xml:space="preserve">
+        <value>設定...</value>
+    </data>
 </root>

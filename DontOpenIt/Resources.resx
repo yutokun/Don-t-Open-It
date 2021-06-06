@@ -27,4 +27,7 @@
     <data name="Mute" xml:space="preserve">
         <value>Mute</value>
     </data>
+    <data name="settings" xml:space="preserve">
+        <value>Settings...</value>
+    </data>
 </root>

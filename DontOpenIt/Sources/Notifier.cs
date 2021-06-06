@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DontOpenIt
@@ -15,6 +16,7 @@ namespace DontOpenIt
             notifyIcon.Icon = DefaultIcon;
             notifyIcon.Text = "Don't Open It";
             notifyIcon.Visible = true;
+            notifyIcon.DoubleClick += (s, a) => SettingsWindow.Show();
 
             var startup = new ToolStripMenuItem();
             startup.Text = Resources.launchOnLogin;
@@ -32,6 +34,10 @@ namespace DontOpenIt
                 }
             };
 
+            var settings = new ToolStripMenuItem();
+            settings.Text = Resources.settings;
+            settings.Click += (s, a) => SettingsWindow.Show();
+
             var mute = new ToolStripMenuItem();
             mute.Text = Resources.Mute;
             mute.CheckOnClick = true;
@@ -47,6 +53,7 @@ namespace DontOpenIt
 
             var menu = new ContextMenuStrip();
             menu.Items.Add(startup);
+            menu.Items.Add(settings);
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(mute);
             menu.Items.Add(new ToolStripSeparator());

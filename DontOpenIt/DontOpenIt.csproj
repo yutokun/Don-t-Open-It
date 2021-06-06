@@ -43,6 +43,12 @@
         <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="AddDialog.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="AddDialog.Designer.cs">
+          <DependentUpon>AddDialog.cs</DependentUpon>
+        </Compile>
         <Compile Include="Messages.Designer.cs">
           <DesignTime>True</DesignTime>
           <AutoGen>True</AutoGen>
@@ -53,6 +59,12 @@
           <DesignTime>True</DesignTime>
           <AutoGen>True</AutoGen>
           <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <Compile Include="SettingsWindow.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="SettingsWindow.Designer.cs">
+          <DependentUpon>SettingsWindow.cs</DependentUpon>
         </Compile>
         <Compile Include="Sources\KillMethod.cs" />
         <Compile Include="Sources\Localizer.cs" />
@@ -69,6 +81,9 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
+      <EmbeddedResource Include="AddDialog.resx">
+        <DependentUpon>AddDialog.cs</DependentUpon>
+      </EmbeddedResource>
       <EmbeddedResource Include="Messages.ja-jp.resx">
         <DependentUpon>Messages.resx</DependentUpon>
       </EmbeddedResource>
@@ -85,6 +100,9 @@
       </EmbeddedResource>
       <EmbeddedResource Include="Resources\Default.ico" />
       <EmbeddedResource Include="Resources\Muted.ico" />
+      <EmbeddedResource Include="SettingsWindow.resx">
+        <DependentUpon>SettingsWindow.cs</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

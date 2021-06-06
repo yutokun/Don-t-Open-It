@@ -61,6 +61,15 @@ namespace DontOpenIt {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The app already added..
+        /// </summary>
+        internal static string appAlreadyAdded {
+            get {
+                return ResourceManager.GetString("appAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Really good? Have urgent jobs?.
         /// </summary>
         internal static string finalCheck {

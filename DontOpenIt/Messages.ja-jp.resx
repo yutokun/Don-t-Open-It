@@ -17,4 +17,7 @@
     <data name="finalCheck" xml:space="preserve">
         <value>本当に良いんですね？ 他にやることはないの？</value>
     </data>
+    <data name="appAlreadyAdded" xml:space="preserve">
+        <value>既にそのアプリは登録されています。</value>
+    </data>
 </root>

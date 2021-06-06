@@ -24,4 +24,7 @@
     <data name="finalCheck" xml:space="preserve">
         <value>Really good? Have urgent jobs?</value>
     </data>
+    <data name="appAlreadyAdded" xml:space="preserve">
+        <value>The app already added.</value>
+    </data>
 </root>
