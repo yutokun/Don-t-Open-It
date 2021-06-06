@@ -9,7 +9,7 @@ using ProcessWatcher;
 
 namespace DontOpenIt
 {
-    internal class Program
+    internal static class Program
     {
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
@@ -43,17 +43,16 @@ namespace DontOpenIt
                 await Task.Run(() =>
                 {
                     var timeFrame = Time.GetTimeFrame();
-                    if (timeFrame != TimeFrame.Working)
-                    {
-                        var yes = ConfirmOpen(timeFrame, process.ProcessName);
-                        if (!yes)
-                        {
-                            var processes = Process.GetProcessesByName(process.ProcessName);
-                            foreach (var p in processes) p.Kill();
-                        }
+                    if (timeFrame == TimeFrame.Working) return;
 
-                        Confirming.Remove(process.ProcessName);
+                    var yes = ConfirmOpen(timeFrame, process.ProcessName);
+                    if (!yes)
+                    {
+                        var processes = Process.GetProcessesByName(process.ProcessName);
+                        foreach (var p in processes) p.Kill();
                     }
+
+                    Confirming.Remove(process.ProcessName);
                 });
             }
         }
