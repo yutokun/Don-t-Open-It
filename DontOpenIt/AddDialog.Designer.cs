@@ -32,19 +32,10 @@ namespace DontOpenIt
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDialog));
-            this.name = new System.Windows.Forms.TextBox();
             this.killMethod = new System.Windows.Forms.ComboBox();
             this.addButton = new System.Windows.Forms.Button();
+            this.processes = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // name
-            // 
-            this.name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.name, "name");
-            this.name.Name = "name";
-            this.name.TextChanged += new System.EventHandler(this.name_TextChanged);
-            this.name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_KeyDown);
-            this.name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.name_KeyPress);
             // 
             // killMethod
             // 
@@ -63,13 +54,24 @@ namespace DontOpenIt
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             this.addButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addButton_KeyDown);
             // 
+            // processes
+            // 
+            this.processes.DropDownHeight = 800;
+            this.processes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.processes.FormattingEnabled = true;
+            resources.ApplyResources(this.processes, "processes");
+            this.processes.Name = "processes";
+            this.processes.Sorted = true;
+            this.processes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.processes_KeyDown);
+            this.processes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.processes_KeyPress);
+            // 
             // AddDialog
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.processes);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.killMethod);
-            this.Controls.Add(this.name);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -79,12 +81,11 @@ namespace DontOpenIt
             this.TopMost = true;
             this.Load += new System.EventHandler(this.AddDialog_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
         }
 
-        private System.Windows.Forms.ComboBox killMethod;
+        private System.Windows.Forms.ComboBox processes;
 
-        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.ComboBox killMethod;
 
         private System.Windows.Forms.Button addButton;
 

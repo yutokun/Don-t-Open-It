@@ -117,29 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 19</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="name.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;name.Name" xml:space="preserve">
-    <value>name</value>
-  </data>
-  <data name="&gt;&gt;name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;name.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;name.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="killMethod.Items" xml:space="preserve">
     <value>CloseMainWindow</value>
   </data>
@@ -149,12 +126,14 @@
   <data name="killMethod.Items2" xml:space="preserve">
     <value>Kill</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="killMethod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 37</value>
+    <value>12, 38</value>
   </data>
   <data name="killMethod.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 20</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="killMethod.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -168,7 +147,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;killMethod.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="addButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
@@ -178,7 +157,7 @@
     <value>155, 12</value>
   </data>
   <data name="addButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 45</value>
+    <value>99, 46</value>
   </data>
   <data name="addButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -196,6 +175,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;addButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="processes.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="processes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="processes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 20</value>
+  </data>
+  <data name="processes.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;processes.Name" xml:space="preserve">
+    <value>processes</value>
+  </data>
+  <data name="&gt;&gt;processes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;processes.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;processes.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -205,7 +208,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>266, 69</value>
+    <value>266, 70</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DontOpenIt
@@ -15,22 +17,23 @@ namespace DontOpenIt
 
         void AddDialog_Load(object sender, EventArgs e)
         {
-            name.Text = Resources.appName;
+            var currentProcesses = Process.GetProcesses()
+                                          .Select(p => p.ProcessName)
+                                          .Distinct()
+                                          .ToArray();
+            processes.Items.Clear();
+            processes.Items.AddRange(currentProcesses);
+            processes.SelectedIndex = 0;
             killMethod.SelectedIndex = 0;
         }
 
-        void name_TextChanged(object sender, EventArgs e)
-        {
-            addButton.Enabled = !string.IsNullOrEmpty(name.Text);
-        }
-
-        void name_KeyDown(object sender, KeyEventArgs e)
+        void processes_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter) addButton.PerformClick();
             if (e.KeyData == Keys.Escape) Close();
         }
 
-        void name_KeyPress(object sender, KeyPressEventArgs e)
+        void processes_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Escape) e.Handled = true;
         }
@@ -44,10 +47,10 @@ namespace DontOpenIt
         void addButton_Click(object sender, EventArgs e)
         {
             var method = (KillMethod)Enum.Parse(typeof(KillMethod), killMethod.Text);
-            var success = Settings.Data.AddTarget(name.Text, method);
+            var success = Settings.Data.AddTarget(processes.Text, method);
             if (success)
             {
-                settings.appList.Items.Add(new ListViewItem(new[] { name.Text, killMethod.Text }));
+                settings.appList.Items.Add(new ListViewItem(new[] { processes.Text, killMethod.Text }));
                 Close();
             }
             else
