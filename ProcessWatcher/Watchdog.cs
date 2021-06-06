@@ -56,7 +56,7 @@ namespace ProcessWatcher
             while (true)
             {
                 await UpdateProcessListSnapshot();
-                await Task.Delay(5000);
+                await Task.Delay(2000);
             }
         }
 
