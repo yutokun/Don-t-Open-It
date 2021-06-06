@@ -17,7 +17,7 @@ namespace DontOpenIt
             notifyIcon.Visible = true;
 
             var startup = new ToolStripMenuItem();
-            startup.Text = "Launch on login";
+            startup.Text = Resources.launchOnLogin;
             startup.CheckOnClick = true;
             startup.Checked = Startup.HasRegistered();
             startup.CheckedChanged += (s, a) =>
@@ -33,7 +33,7 @@ namespace DontOpenIt
             };
 
             var mute = new ToolStripMenuItem();
-            mute.Text = "ミュート";
+            mute.Text = Resources.Mute;
             mute.CheckOnClick = true;
             mute.CheckedChanged += (s, a) =>
             {
@@ -42,7 +42,7 @@ namespace DontOpenIt
             };
 
             var exit = new ToolStripMenuItem();
-            exit.Text = "&Exit";
+            exit.Text = Resources.exit;
             exit.Click += (s, a) => Application.Exit();
 
             var menu = new ContextMenuStrip();

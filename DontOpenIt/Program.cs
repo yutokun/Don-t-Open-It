@@ -65,13 +65,13 @@ namespace DontOpenIt
             {
                 TimeFrame.Before => "9時になっていませんがよろしいですか？",
                 TimeFrame.After => "20時を過ぎていますがよろしいですか？",
-                TimeFrame.Holiday => "週末ですがよろしいですか？",
+                TimeFrame.Holiday => Messages.holiday,
                 _ => throw new ArgumentOutOfRangeException(nameof(timeFrame), timeFrame, null)
             };
 
             var result = ShowMessage($"{name} を開きましたね？ {message}", "Don't Open It");
             if (result == DialogResult.No) return false;
-            result = MessageBox.Show("本当に良いんですね？ 他にやることはないの？", "Don't Open It!!!");
+            result = ShowMessage(Messages.finalCheck, "Don't Open It!!!");
             if (result == DialogResult.No) return false;
             return true;
 
