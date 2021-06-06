@@ -23,12 +23,12 @@ namespace DontOpenIt
 
             var now = DateTime.Now.TimeOfDay;
 
-            if (TimeSpan.FromHours(4) <= now && now < TimeSpan.FromHours(9))
+            if (TimeSpan.FromHours(4) <= now && now < TimeSpan.FromHours(Settings.Data.BeginHour))
             {
                 return TimeFrame.Before;
             }
 
-            if (TimeSpan.FromHours(4) > now || now > TimeSpan.FromHours(20))
+            if (TimeSpan.FromHours(4) > now || now > TimeSpan.FromHours(Settings.Data.EndHour))
             {
                 return TimeFrame.After;
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,7 @@ namespace DontOpenIt
 
         public static void Main(string[] args)
         {
+            Settings.Load();
             Directory.SetCurrentDirectory(Path.GetDirectoryName(Application.ExecutablePath));
             ShowWindow(GetConsoleWindow(), 0);
             Notifier.Create();
@@ -37,9 +39,8 @@ namespace DontOpenIt
         {
             if (Mute) return;
             Console.WriteLine(process.ProcessName);
-            if (process.ProcessName == "Slack")
+            if (Settings.TargetApps.Contains(process.ProcessName) && !Confirming.Contains(process.ProcessName))
             {
-                if (Confirming.Contains(process.ProcessName)) return;
                 Confirming.Add(process.ProcessName);
 
                 await Task.Run(() =>
@@ -51,7 +52,26 @@ namespace DontOpenIt
                     if (!yes)
                     {
                         var processes = Process.GetProcessesByName(process.ProcessName);
-                        foreach (var p in processes) p.Kill();
+                        foreach (var p in processes)
+                        {
+                            switch (Settings.GetTarget(process.ProcessName).KillMethod)
+                            {
+                                case KillMethod.CloseMainWindow:
+                                    p.CloseMainWindow();
+                                    break;
+
+                                case KillMethod.Close:
+                                    p.Close();
+                                    break;
+
+                                case KillMethod.Kill:
+                                    p.Kill();
+                                    break;
+
+                                default:
+                                    throw new ArgumentOutOfRangeException();
+                            }
+                        }
                     }
 
                     Confirming.Remove(process.ProcessName);
@@ -63,8 +83,8 @@ namespace DontOpenIt
         {
             var message = timeFrame switch
             {
-                TimeFrame.Before => Localizer.BeforeWorkingTime(9),
-                TimeFrame.After => Localizer.AfterWorkingTime(20),
+                TimeFrame.Before => Localizer.BeforeWorkingTime(Settings.Data.BeginHour),
+                TimeFrame.After => Localizer.AfterWorkingTime(Settings.Data.EndHour),
                 TimeFrame.Holiday => Messages.holiday,
                 _ => throw new ArgumentOutOfRangeException(nameof(timeFrame), timeFrame, null)
             };
