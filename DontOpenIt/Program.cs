@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -18,61 +17,19 @@ namespace DontOpenIt
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-        enum TimeFrame
-        {
-            Before,
-            Working,
-            After
-        }
-
         static readonly List<string> Confirming = new List<string>();
 
         public static void Main(string[] args)
         {
             Directory.SetCurrentDirectory(Path.GetDirectoryName(Application.ExecutablePath));
             ShowWindow(GetConsoleWindow(), 0);
-            CreateNotifyIcon();
+            Notifier.Create();
 
             var watchdog = new Watchdog();
             watchdog.Attach(OnProcessCreated, out _);
             watchdog.Run();
+
             Application.Run();
-        }
-
-        static void CreateNotifyIcon()
-        {
-            var icon = new NotifyIcon();
-            icon.Icon = new Icon("./icon.ico");
-            icon.Text = "Don't Open It";
-            icon.Visible = true;
-
-            var startup = new ToolStripMenuItem();
-            startup.Text = "Launch on login";
-            startup.CheckOnClick = true;
-            startup.Checked = IsRegistered();
-            startup.CheckedChanged += (s, a) =>
-            {
-                if (startup.Checked)
-                {
-                    RegisterStartup();
-                }
-                else
-                {
-                    UnregisterStartup();
-                }
-            };
-
-            var separator = new ToolStripSeparator();
-
-            var exit = new ToolStripMenuItem();
-            exit.Text = "&Exit";
-            exit.Click += (s, a) => Application.Exit();
-
-            var menu = new ContextMenuStrip();
-            menu.Items.Add(startup);
-            menu.Items.Add(separator);
-            menu.Items.Add(exit);
-            icon.ContextMenuStrip = menu;
         }
 
         static async void OnProcessCreated(Process process)
@@ -85,7 +42,7 @@ namespace DontOpenIt
 
                 await Task.Run(() =>
                 {
-                    var timeFrame = GetTimeFrame();
+                    var timeFrame = Time.GetTimeFrame();
                     if (timeFrame != TimeFrame.Working)
                     {
                         var yes = ConfirmOpen(timeFrame, process.ProcessName);
@@ -101,26 +58,9 @@ namespace DontOpenIt
             }
         }
 
-        static TimeFrame GetTimeFrame()
-        {
-            var now = DateTime.Now.TimeOfDay;
-
-            if (TimeSpan.FromHours(4) <= now && now < TimeSpan.FromHours(9))
-            {
-                return TimeFrame.Before;
-            }
-
-            if (TimeSpan.FromHours(4) > now || now > TimeSpan.FromHours(20))
-            {
-                return TimeFrame.After;
-            }
-
-            return TimeFrame.Working;
-        }
-
         static bool ConfirmOpen(TimeFrame timeFrame, string name)
         {
-            var message = "";
+            string message;
             switch (timeFrame)
             {
                 case TimeFrame.Before:
@@ -152,28 +92,6 @@ namespace DontOpenIt
                     MessageBoxOptions.DefaultDesktopOnly
                 );
             }
-        }
-
-        static void RegisterStartup()
-        {
-            var registry = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            registry.SetValue(Application.ProductName, Application.ExecutablePath);
-            registry.Close();
-        }
-
-        static void UnregisterStartup()
-        {
-            var registry = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            registry.DeleteValue(Application.ProductName);
-            registry.Close();
-        }
-
-        static bool IsRegistered()
-        {
-            var registry = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            var isRegistered = registry.GetValue(Application.ProductName);
-            registry.Close();
-            return isRegistered != null;
         }
     }
 }
