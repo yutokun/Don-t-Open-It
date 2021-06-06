@@ -56,9 +56,8 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
-      <Content Include="icon.ico">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+      <EmbeddedResource Include="Default.ico" />
+      <EmbeddedResource Include="Muted.ico" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

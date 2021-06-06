@@ -5,12 +5,15 @@ namespace DontOpenIt
 {
     public static class Notifier
     {
+        static readonly Icon DefaultIcon = new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("DontOpenIt.Default.ico"));
+        static readonly Icon MuteIcon = new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("DontOpenIt.Muted.ico"));
+
         public static void Create()
         {
-            var icon = new NotifyIcon();
-            icon.Icon = new Icon("./icon.ico");
-            icon.Text = "Don't Open It";
-            icon.Visible = true;
+            var notifyIcon = new NotifyIcon();
+            notifyIcon.Icon = DefaultIcon;
+            notifyIcon.Text = "Don't Open It";
+            notifyIcon.Visible = true;
 
             var startup = new ToolStripMenuItem();
             startup.Text = "Launch on login";
@@ -31,7 +34,11 @@ namespace DontOpenIt
             var mute = new ToolStripMenuItem();
             mute.Text = "ミュート";
             mute.CheckOnClick = true;
-            mute.CheckedChanged += (s, a) => Program.Mute = mute.Checked;
+            mute.CheckedChanged += (s, a) =>
+            {
+                Program.Mute = mute.Checked;
+                notifyIcon.Icon = mute.Checked ? MuteIcon : DefaultIcon;
+            };
 
             var exit = new ToolStripMenuItem();
             exit.Text = "&Exit";
@@ -43,7 +50,7 @@ namespace DontOpenIt
             menu.Items.Add(mute);
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(exit);
-            icon.ContextMenuStrip = menu;
+            notifyIcon.ContextMenuStrip = menu;
         }
     }
 }
