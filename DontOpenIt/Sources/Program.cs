@@ -85,7 +85,7 @@ namespace DontOpenIt
             {
                 TimeFrame.Before => Localizer.BeforeWorkingTime(Settings.Data.BeginHour),
                 TimeFrame.After => Localizer.AfterWorkingTime(Settings.Data.EndHour),
-                TimeFrame.Holiday => Messages.holiday,
+                TimeFrame.Weekend => Messages.weekend,
                 _ => throw new ArgumentOutOfRangeException(nameof(timeFrame), timeFrame, null)
             };
 

@@ -35,13 +35,14 @@ namespace DontOpenIt
             this.label1 = new System.Windows.Forms.Label();
             this.beginTime = new System.Windows.Forms.TextBox();
             this.endTime = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
             this.appList = new System.Windows.Forms.ListView();
             this.name = new System.Windows.Forms.ColumnHeader();
             this.killMethod = new System.Windows.Forms.ColumnHeader();
+            this.weekend = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -62,11 +63,6 @@ namespace DontOpenIt
             resources.ApplyResources(this.endTime, "endTime");
             this.endTime.Name = "endTime";
             this.endTime.TextChanged += new System.EventHandler(this.endTime_TextChanged);
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
             // 
             // label3
             // 
@@ -109,17 +105,30 @@ namespace DontOpenIt
             // 
             resources.ApplyResources(this.killMethod, "killMethod");
             // 
+            // weekend
+            // 
+            resources.ApplyResources(this.weekend, "weekend");
+            this.weekend.Name = "weekend";
+            this.weekend.UseVisualStyleBackColor = true;
+            this.weekend.CheckedChanged += new System.EventHandler(this.weekend_CheckedChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // SettingsWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.weekend);
             this.Controls.Add(this.appList);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.endTime);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.beginTime);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -131,6 +140,12 @@ namespace DontOpenIt
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.CheckBox weekend;
+
+        private System.Windows.Forms.Label label2;
+
+        private System.Windows.Forms.CheckBox checkBox1;
 
         private System.Windows.Forms.ColumnHeader name;
         private System.Windows.Forms.ColumnHeader killMethod;
@@ -146,8 +161,6 @@ namespace DontOpenIt
         private System.Windows.Forms.Button addButton;
 
         private System.Windows.Forms.Label label3;
-
-        private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.Label label1;
 

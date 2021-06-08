@@ -19,6 +19,7 @@ namespace DontOpenIt
         {
             beginTime.Text = Settings.Data.BeginHour.ToString();
             endTime.Text = Settings.Data.EndHour.ToString();
+            weekend.Checked = Settings.Data.StopWeekend;
             removeButton.Enabled = false;
             foreach (var target in Settings.Data.Targets)
             {
@@ -85,6 +86,12 @@ namespace DontOpenIt
 
             e.Cancel = true;
             Hide();
+        }
+
+        void weekend_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Data.StopWeekend = weekend.Checked;
+            Settings.Save();
         }
     }
 }

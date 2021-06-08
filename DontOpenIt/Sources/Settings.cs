@@ -18,6 +18,7 @@ namespace DontOpenIt
 
             public int BeginHour;
             public int EndHour;
+            public bool StopWeekend;
             public readonly List<Target> Targets = new List<Target>();
 
             public bool AddTarget(string name, KillMethod method)

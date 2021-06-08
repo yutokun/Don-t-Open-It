@@ -7,7 +7,7 @@ namespace DontOpenIt
         Before,
         Working,
         After,
-        Holiday
+        Weekend
     }
 
     public static class Time
@@ -16,9 +16,9 @@ namespace DontOpenIt
         {
             var dayOfWeek = DateTime.Now.DayOfWeek;
 
-            if (dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
+            if (Settings.Data.StopWeekend && dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
             {
-                return TimeFrame.Holiday;
+                return TimeFrame.Weekend;
             }
 
             var now = DateTime.Now.TimeOfDay;

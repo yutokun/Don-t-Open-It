@@ -12,10 +12,7 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="label1.Text" xml:space="preserve">
-        <value>業務開始時刻</value>
-    </data>
-    <data name="label2.Text" xml:space="preserve">
-        <value>業務終了時刻</value>
+        <value>監視する時間</value>
     </data>
     <data name="label3.Text" xml:space="preserve">
         <value>監視するアプリ</value>
@@ -25,5 +22,8 @@
     </data>
     <data name="killMethod.Text" xml:space="preserve">
         <value>終了方法</value>
+    </data>
+    <data name="weekend.Text" xml:space="preserve">
+        <value>土日は終日</value>
     </data>
 </root>

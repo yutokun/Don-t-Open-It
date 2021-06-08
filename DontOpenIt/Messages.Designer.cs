@@ -81,9 +81,9 @@ namespace DontOpenIt {
         /// <summary>
         ///   Looks up a localized string similar to But is the weekend! Are you sure?.
         /// </summary>
-        internal static string holiday {
+        internal static string weekend {
             get {
-                return ResourceManager.GetString("holiday", resourceCulture);
+                return ResourceManager.GetString("weekend", resourceCulture);
             }
         }
     }
