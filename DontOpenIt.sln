@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontOpenIt", "DontOpenIt\Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessWatcher", "ProcessWatcher\ProcessWatcher.csproj", "{B8E276F7-E77B-469A-8578-486ACF27FA62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontOpenItWPF", "DontOpenItWPF\DontOpenItWPF.csproj", "{AFC7CB3A-740F-4D49-980A-6CEEC81C6CC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B8E276F7-E77B-469A-8578-486ACF27FA62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8E276F7-E77B-469A-8578-486ACF27FA62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8E276F7-E77B-469A-8578-486ACF27FA62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFC7CB3A-740F-4D49-980A-6CEEC81C6CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC7CB3A-740F-4D49-980A-6CEEC81C6CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC7CB3A-740F-4D49-980A-6CEEC81C6CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC7CB3A-740F-4D49-980A-6CEEC81C6CC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
