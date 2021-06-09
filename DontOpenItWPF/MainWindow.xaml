@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DontOpenItWPF"
         xmlns:properties="clr-namespace:DontOpenItWPF.Properties"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="Don't Open It"
         SizeToContent="WidthAndHeight">
@@ -34,13 +35,10 @@
             <GroupBox Header="監視する時間" Margin="0 0 0 10">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                        <TextBox x:Name="BeginTime" Grid.Column="1" Text="9"
-                                 HorizontalAlignment="Left"
+                        <TextBox x:Name="BeginTime" ="{Binding}" HorizontalAlignment="Left"
                                  VerticalAlignment="Top" />
                         <Label Content="～" />
-                        <TextBox x:Name="EndTime" Grid.Column="1" Text="20"
-                                 HorizontalAlignment="Left"
-                                 VerticalAlignment="Top" />
+                        <TextBox x:Name="EndTime" HorizontalAlignment="Left" VerticalAlignment="Top" />
                     </StackPanel>
                     <CheckBox Name="StopWeekend">土日は終日監視する</CheckBox>
                 </StackPanel>

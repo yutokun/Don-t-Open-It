@@ -13,6 +13,7 @@
         <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <WarningLevel>4</WarningLevel>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,6 +40,8 @@
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Xaml">
             <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -48,10 +51,26 @@
         <Reference Include="PresentationFramework" />
     </ItemGroup>
     <ItemGroup>
-        <ApplicationDefinition Include="App.xaml">
+        <Page Include="App.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
-        </ApplicationDefinition>
+        </Page>
+        <Compile Include="Messages.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>Messages.resx</DependentUpon>
+        </Compile>
+        <Compile Include="Resources.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <Compile Include="Sources\KillMethod.cs" />
+        <Compile Include="Sources\Localizer.cs" />
+        <Compile Include="Sources\Notifier.cs" />
+        <Compile Include="Sources\Settings.cs" />
+        <Compile Include="Sources\Startup.cs" />
+        <Compile Include="Sources\Time.cs" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
@@ -74,6 +93,13 @@
             <DesignTime>True</DesignTime>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
+        <EmbeddedResource Include="Messages.ja-jp.resx">
+          <DependentUpon>Messages.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Messages.resx">
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.ja-jp.resx">
           <DependentUpon>Resources.resx</DependentUpon>
         </EmbeddedResource>
@@ -81,11 +107,24 @@
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
-        <EmbeddedResource Include="Resources\Default.ico" />
-        <EmbeddedResource Include="Resources\Muted.ico" />
+        <EmbeddedResource Include="Resources.ja-jp.resx">
+          <DependentUpon>Resources.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Resources.resx">
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <Resource Include="Resources\Default.ico" />
+        <Resource Include="Resources\Muted.ico" />
     </ItemGroup>
     <ItemGroup>
         <None Include="App.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\ProcessWatcher\ProcessWatcher.csproj">
+        <Project>{b8e276f7-e77b-469a-8578-486acf27fa62}</Project>
+        <Name>ProcessWatcher</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
