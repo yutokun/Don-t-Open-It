@@ -51,10 +51,14 @@
         <Reference Include="PresentationFramework" />
     </ItemGroup>
     <ItemGroup>
+        <Page Include="AddDialog.xaml" />
         <Page Include="App.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </Page>
+        <Compile Include="AddDialog.xaml.cs">
+          <DependentUpon>AddDialog.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Sources\KillMethod.cs" />
         <Compile Include="Sources\Localizer.cs" />
         <Compile Include="Sources\Notifier.cs" />

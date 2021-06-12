@@ -5,10 +5,7 @@ using System.Windows.Interop;
 
 namespace DontOpenIt
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow
+    public partial class AddDialog : Window
     {
         [DllImport("user32.dll")]
         static extern int GetWindowLong(IntPtr hWnd, int nIndex);
@@ -21,18 +18,9 @@ namespace DontOpenIt
         const int WS_MINIMIZEBOX = 0x20000;
         const int WM_SETICON = 0x0080;
 
-        static MainWindow instance;
-
-        public MainWindow()
+        public AddDialog()
         {
             InitializeComponent();
-        }
-
-        public new static void Show()
-        {
-            if (instance is { IsLoaded: true }) return;
-            instance = new MainWindow();
-            ((Window)instance).Show();
         }
 
         protected override void OnSourceInitialized(EventArgs e)
@@ -43,21 +31,14 @@ namespace DontOpenIt
             style &= ~WS_MAXIMIZEBOX & ~WS_MINIMIZEBOX;
             SetWindowLong(handle, GWL_STYLE, style);
             SetWindowLong(handle, WM_SETICON, 0);
-
-            BeginTime.Text = Settings.Data.BeginHour.ToString();
-            EndTime.Text = Settings.Data.EndHour.ToString();
-            StopWeekend.IsChecked = Settings.Data.StopWeekend;
-            foreach (var target in Settings.Data.Targets)
-            {
-                AppList.Items.Add(new[] { target.Name, target.KillMethod.ToString() });
-            }
         }
 
         void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddDialog();
-            dialog.Owner = this;
-            dialog.ShowDialog();
+            var owner = (MainWindow)Owner;
+            owner.AppList.Items.Add(new[] { ProcessName.Text, KillMethod.Text });
+            Settings.Data.AddTarget(ProcessName.Text, (KillMethod)Enum.Parse(typeof(KillMethod), KillMethod.Text));
+            Close();
         }
     }
 }

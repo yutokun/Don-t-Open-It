@@ -150,4 +150,13 @@
   <data name="weekend" xml:space="preserve">
     <value>But is the weekend! Are you sure?</value>
   </data>
+  <data name="addApp" xml:space="preserve">
+    <value>Add an app to watch</value>
+  </data>
+  <data name="appName" xml:space="preserve">
+    <value>App Name</value>
+  </data>
+  <data name="add" xml:space="preserve">
+    <value>Add</value>
+  </data>
 </root>

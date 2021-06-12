@@ -1,0 +1,46 @@
+﻿<Window x:Class="DontOpenIt.AddDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:DontOpenIt"
+        xmlns:properties="clr-namespace:DontOpenIt.Properties"
+        WindowStartupLocation="CenterOwner"
+        mc:Ignorable="d"
+        Title="{x:Static properties:Resources.addApp}"
+        SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="0 0 0 10" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="Width" Value="130" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="0 0 0 10" />
+            <Setter Property="Padding" Value="5 0 0 0" />
+            <Setter Property="Width" Value="130" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0 0 0 10" />
+            <Setter Property="Width" Value="100" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{x:Static properties:Resources.appName}" />
+                <TextBox x:Name="ProcessName" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{x:Static properties:Resources.killMethod}" />
+                <ComboBox x:Name="KillMethod" SelectedIndex="0">
+                    <ComboBoxItem>CloseMainWindow</ComboBoxItem>
+                    <ComboBoxItem>Close</ComboBoxItem>
+                    <ComboBoxItem>Kill</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <Button Content="{x:Static properties:Resources.add}" Width="50" Click="AddButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

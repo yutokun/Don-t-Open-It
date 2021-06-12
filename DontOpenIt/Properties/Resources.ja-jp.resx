@@ -47,4 +47,13 @@
     <data name="weekend" xml:space="preserve">
         <value>週末ですがよろしいですか？</value>
     </data>
+    <data name="addApp" xml:space="preserve">
+        <value>監視するアプリを追加</value>
+    </data>
+    <data name="appName" xml:space="preserve">
+        <value>アプリ名</value>
+    </data>
+    <data name="add" xml:space="preserve">
+        <value>追加</value>
+    </data>
 </root>
