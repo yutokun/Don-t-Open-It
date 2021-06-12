@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using DontOpenIt.Properties;
+using Application = System.Windows.Application;
 
 namespace DontOpenIt
 {
     public static class Notifier
     {
-        static Icon LoadIcon(string path) => new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(path));
-        static readonly Icon DefaultIcon = LoadIcon("DontOpenIt.Resources.Default.ico");
-        static readonly Icon MuteIcon = LoadIcon("DontOpenIt.Resources.Muted.ico");
+        static Icon LoadIcon(string name)
+        {
+            var uri = new Uri($"pack://application:,,,/DontOpenIt;component/Resources/{name}", UriKind.RelativeOrAbsolute);
+            var stream = Application.GetResourceStream(uri).Stream;
+            return new Icon(stream);
+        }
+
+        static readonly Icon DefaultIcon = LoadIcon("Default.ico");
+        static readonly Icon MuteIcon = LoadIcon("Muted.ico");
 
         public static void Create()
         {
@@ -16,7 +24,7 @@ namespace DontOpenIt
             notifyIcon.Icon = DefaultIcon;
             notifyIcon.Text = "Don't Open It";
             notifyIcon.Visible = true;
-            notifyIcon.DoubleClick += (s, a) => SettingsWindow.Show();
+            notifyIcon.DoubleClick += (s, a) => MainWindow.Show();
 
             var startup = new ToolStripMenuItem();
             startup.Text = Resources.launchOnLogin;
@@ -36,20 +44,20 @@ namespace DontOpenIt
 
             var settings = new ToolStripMenuItem();
             settings.Text = Resources.settings;
-            settings.Click += (s, a) => SettingsWindow.Show();
+            settings.Click += (s, a) => MainWindow.Show();
 
             var mute = new ToolStripMenuItem();
             mute.Text = Resources.Mute;
             mute.CheckOnClick = true;
             mute.CheckedChanged += (s, a) =>
             {
-                Program.Mute = mute.Checked;
+                App.Mute = mute.Checked;
                 notifyIcon.Icon = mute.Checked ? MuteIcon : DefaultIcon;
             };
 
             var exit = new ToolStripMenuItem();
             exit.Text = Resources.exit;
-            exit.Click += (s, a) => Application.Exit();
+            exit.Click += (s, a) => Application.Current.Shutdown();
 
             var menu = new ContextMenuStrip();
             menu.Items.Add(startup);

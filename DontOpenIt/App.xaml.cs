@@ -8,7 +8,7 @@ using ProcessWatcher;
 using MessageBox = System.Windows.MessageBox;
 using MessageBoxOptions = System.Windows.MessageBoxOptions;
 
-namespace DontOpenItWPF
+namespace DontOpenIt
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -87,13 +87,13 @@ namespace DontOpenItWPF
             {
                 TimeFrame.Before => Localizer.BeforeWorkingTime(Settings.Data.BeginHour),
                 TimeFrame.After => Localizer.AfterWorkingTime(Settings.Data.EndHour),
-                TimeFrame.Weekend => Messages.weekend,
+                TimeFrame.Weekend => DontOpenIt.Properties.Resources.weekend,
                 _ => throw new ArgumentOutOfRangeException(nameof(timeFrame), timeFrame, null)
             };
 
             var result = ShowMessage($"{Localizer.DidYouOpenApp(name)} {message}", "Don't Open It");
             if (result == MessageBoxResult.No) return false;
-            result = ShowMessage(Messages.finalCheck, "Don't Open It!!!");
+            result = ShowMessage(DontOpenIt.Properties.Resources.finalCheck, "Don't Open It!!!");
             if (result == MessageBoxResult.No) return false;
             return true;
 

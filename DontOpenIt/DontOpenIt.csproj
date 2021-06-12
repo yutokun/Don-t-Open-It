@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{F1660C32-A0BA-4FE5-867D-53C801273C1A}</ProjectGuid>
-        <OutputType>Exe</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <ProjectGuid>{AFC7CB3A-740F-4D49-980A-6CEEC81C6CC3}</ProjectGuid>
+        <OutputType>WinExe</OutputType>
         <RootNamespace>DontOpenIt</RootNamespace>
         <AssemblyName>DontOpenIt</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <WarningLevel>4</WarningLevel>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <LangVersion>8</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -22,6 +24,7 @@
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
+        <ApplicationIcon>Resources/Default.ico</ApplicationIcon>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,48 +34,68 @@
         <DefineConstants>TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
+        <ApplicationIcon>Resources/Default.ico</ApplicationIcon>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="PresentationFramework" />
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Drawing" />
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
+        <Reference Include="System.Xaml">
+            <RequiredTargetFramework>4.0</RequiredTargetFramework>
+        </Reference>
         <Reference Include="WindowsBase" />
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="AddDialog.cs">
-          <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="AddDialog.Designer.cs">
-          <DependentUpon>AddDialog.cs</DependentUpon>
-        </Compile>
-        <Compile Include="Messages.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>Messages.resx</DependentUpon>
-        </Compile>
-        <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Resources.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>Resources.resx</DependentUpon>
-        </Compile>
-        <Compile Include="SettingsWindow.cs">
-          <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="SettingsWindow.Designer.cs">
-          <DependentUpon>SettingsWindow.cs</DependentUpon>
-        </Compile>
+        <Page Include="App.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
         <Compile Include="Sources\KillMethod.cs" />
         <Compile Include="Sources\Localizer.cs" />
         <Compile Include="Sources\Notifier.cs" />
-        <Compile Include="Sources\Program.cs" />
         <Compile Include="Sources\Settings.cs" />
         <Compile Include="Sources\Startup.cs" />
         <Compile Include="Sources\Time.cs" />
+        <Page Include="MainWindow.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+        <Compile Include="App.xaml.cs">
+            <DependentUpon>App.xaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Include="MainWindow.xaml.cs">
+            <DependentUpon>MainWindow.xaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Properties\AssemblyInfo.cs">
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Include="Properties\Resources.Designer.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <EmbeddedResource Include="Properties\Resources.ja-jp.resx">
+          <Generator>PublicResXFileCodeGenerator</Generator>
+          <DependentUpon>Resources.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Properties\Resources.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <Resource Include="Resources\Default.ico" />
+        <Resource Include="Resources\Muted.ico" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="App.config" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\ProcessWatcher\ProcessWatcher.csproj">
@@ -80,43 +103,5 @@
         <Name>ProcessWatcher</Name>
       </ProjectReference>
     </ItemGroup>
-    <ItemGroup>
-      <EmbeddedResource Include="AddDialog.ja-jp.resx">
-        <DependentUpon>AddDialog.cs</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Include="AddDialog.resx">
-        <DependentUpon>AddDialog.cs</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Messages.ja-jp.resx">
-        <DependentUpon>Messages.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Messages.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Resources.ja-jp.resx">
-        <DependentUpon>Resources.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Resources.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Resources\Default.ico" />
-      <EmbeddedResource Include="Resources\Muted.ico" />
-      <EmbeddedResource Include="SettingsWindow.ja-jp.resx">
-        <DependentUpon>SettingsWindow.cs</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Include="SettingsWindow.resx">
-        <DependentUpon>SettingsWindow.cs</DependentUpon>
-      </EmbeddedResource>
-    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-         Other similar extension points exist, see Microsoft.Common.targets.
-    <Target Name="BeforeBuild">
-    </Target>
-    <Target Name="AfterBuild">
-    </Target>
-    -->
-
 </Project>

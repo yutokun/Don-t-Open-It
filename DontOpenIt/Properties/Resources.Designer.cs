@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DontOpenItWPF {
+namespace DontOpenIt.Properties {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace DontOpenItWPF {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace DontOpenItWPF {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DontOpenItWPF.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DontOpenIt.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace DontOpenItWPF {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,27 +61,45 @@ namespace DontOpenItWPF {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App Name.
+        ///   Looks up a localized string similar to Applications.
         /// </summary>
-        internal static string appName {
+        public static string appsToWatch {
             get {
-                return ResourceManager.GetString("appName", resourceCulture);
+                return ResourceManager.GetString("appsToWatch", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
-        internal static string exit {
+        public static string exit {
             get {
                 return ResourceManager.GetString("exit", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Really good? Have urgent jobs?.
+        /// </summary>
+        public static string finalCheck {
+            get {
+                return ResourceManager.GetString("finalCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kill Method.
+        /// </summary>
+        public static string killMethod {
+            get {
+                return ResourceManager.GetString("killMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Launch on login.
         /// </summary>
-        internal static string launchOnLogin {
+        public static string launchOnLogin {
             get {
                 return ResourceManager.GetString("launchOnLogin", resourceCulture);
             }
@@ -90,16 +108,25 @@ namespace DontOpenItWPF {
         /// <summary>
         ///   Looks up a localized string similar to Mute.
         /// </summary>
-        internal static string Mute {
+        public static string Mute {
             get {
                 return ResourceManager.GetString("Mute", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string name {
+            get {
+                return ResourceManager.GetString("name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove.
         /// </summary>
-        internal static string remove {
+        public static string remove {
             get {
                 return ResourceManager.GetString("remove", resourceCulture);
             }
@@ -108,9 +135,36 @@ namespace DontOpenItWPF {
         /// <summary>
         ///   Looks up a localized string similar to Settings....
         /// </summary>
-        internal static string settings {
+        public static string settings {
             get {
                 return ResourceManager.GetString("settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time to Watch.
+        /// </summary>
+        public static string timeToWatch {
+            get {
+                return ResourceManager.GetString("timeToWatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Watch all day on weekend.
+        /// </summary>
+        public static string watchAllDayOnWeekend {
+            get {
+                return ResourceManager.GetString("watchAllDayOnWeekend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to But is the weekend! Are you sure?.
+        /// </summary>
+        public static string weekend {
+            get {
+                return ResourceManager.GetString("weekend", resourceCulture);
             }
         }
     }

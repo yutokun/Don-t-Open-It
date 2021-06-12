@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace DontOpenItWPF
+namespace DontOpenIt
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -47,6 +47,10 @@ namespace DontOpenItWPF
             BeginTime.Text = Settings.Data.BeginHour.ToString();
             EndTime.Text = Settings.Data.EndHour.ToString();
             StopWeekend.IsChecked = Settings.Data.StopWeekend;
+            foreach (var target in Settings.Data.Targets)
+            {
+                AppList.Items.Add(new[] { target.Name, target.KillMethod.ToString() });
+            }
         }
     }
 }
