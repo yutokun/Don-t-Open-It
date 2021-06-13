@@ -30,9 +30,8 @@
             <StackPanel Orientation="Horizontal">
                 <Label Content="{x:Static properties:Resources.killMethod}" />
                 <ComboBox x:Name="KillMethod" SelectedIndex="0">
-                    <ComboBoxItem>CloseMainWindow</ComboBoxItem>
-                    <ComboBoxItem>Close</ComboBoxItem>
-                    <ComboBoxItem>Kill</ComboBoxItem>
+                    <ComboBoxItem Content="{x:Static properties:Resources.requestToExit}" />
+                    <ComboBoxItem Content="{x:Static properties:Resources.kill}" />
                 </ComboBox>
             </StackPanel>
             <Button Content="{x:Static properties:Resources.add}" Width="50" Click="AddButton_Click" />

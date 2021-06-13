@@ -52,8 +52,8 @@
                             <GridView>
                                 <GridViewColumn Header="{x:Static properties:Resources.name}" Width="70"
                                                 DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="{x:Static properties:Resources.killMethod}" Width="115"
-                                                DisplayMemberBinding="{Binding KillMethod}" />
+                                <GridViewColumn Header="{x:Static properties:Resources.killMethod}" Width="135"
+                                                DisplayMemberBinding="{Binding KillMethodString}" />
                             </GridView>
                         </ListView.View>
                         <!-- <ListView.ItemContainerStyle> -->

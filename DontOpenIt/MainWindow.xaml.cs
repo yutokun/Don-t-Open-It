@@ -56,7 +56,7 @@ namespace DontOpenIt
 
         public void AddToAppList(string name, KillMethod killMethod)
         {
-            AppList.Items.Add(new { Name = name, KillMethod = killMethod });
+            AppList.Items.Add(new { Name = name, KillMethodString = killMethod.GetReadableString(), KillMethod = killMethod });
         }
 
         void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

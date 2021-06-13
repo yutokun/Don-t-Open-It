@@ -44,7 +44,7 @@ namespace DontOpenIt
             var currentProcesses = Process.GetProcesses()
                                           .Select(p => p.ProcessName)
                                           .Distinct()
-                                          .Except(ExcludedProcesses) 
+                                          .Except(ExcludedProcesses)
                                           .Except(Settings.TargetApps)
                                           .OrderBy(p => p)
                                           .ToArray();
@@ -59,7 +59,7 @@ namespace DontOpenIt
 
         void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var killMethod = (KillMethod)Enum.Parse(typeof(KillMethod), KillMethod.Text);
+            var killMethod = (KillMethod)KillMethod.SelectedIndex;
             var success = Settings.Data.AddTarget(ProcessName.Text, killMethod);
             if (success)
             {

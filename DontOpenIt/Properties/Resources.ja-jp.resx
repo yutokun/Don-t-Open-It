@@ -59,4 +59,10 @@
     <data name="appAlreadyAdded" xml:space="preserve">
         <value>既にそのアプリは登録されています。</value>
     </data>
+    <data name="requestToExit" xml:space="preserve">
+        <value>アプリに終了するよう要求</value>
+    </data>
+    <data name="kill" xml:space="preserve">
+        <value>強制終了</value>
+    </data>
 </root>

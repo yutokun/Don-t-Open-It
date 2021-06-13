@@ -62,10 +62,6 @@ namespace DontOpenIt
                                     p.CloseMainWindow();
                                     break;
 
-                                case KillMethod.Close:
-                                    p.Close();
-                                    break;
-
                                 case KillMethod.Kill:
                                     p.Kill();
                                     break;

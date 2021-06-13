@@ -124,6 +124,15 @@ namespace DontOpenIt.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Force exit.
+        /// </summary>
+        public static string kill {
+            get {
+                return ResourceManager.GetString("kill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kill Method.
         /// </summary>
         public static string killMethod {
@@ -165,6 +174,15 @@ namespace DontOpenIt.Properties {
         public static string remove {
             get {
                 return ResourceManager.GetString("remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request to exit.
+        /// </summary>
+        public static string requestToExit {
+            get {
+                return ResourceManager.GetString("requestToExit", resourceCulture);
             }
         }
         

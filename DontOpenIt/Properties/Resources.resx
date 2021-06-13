@@ -162,4 +162,10 @@
   <data name="appAlreadyAdded" xml:space="preserve">
     <value>The app already added.</value>
   </data>
+  <data name="requestToExit" xml:space="preserve">
+    <value>Request to exit</value>
+  </data>
+  <data name="kill" xml:space="preserve">
+    <value>Force exit</value>
+  </data>
 </root>
