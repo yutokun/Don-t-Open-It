@@ -1,7 +1,5 @@
 # Don't Open It
 
-**WORK IN PROGRESS**
-
 Prevent to launch specific app when you are not in working time.
 
 ![](doc/message.png)
@@ -14,7 +12,7 @@ This app is in notification area. You could add apps to observe.
 
 ![](doc/settings.png)
 
-## Localize
+## Localization
 
 - Japanese
 - English
