@@ -42,15 +42,15 @@ Released under the MIT license
 
 Prevent to launch specific app when you are not in working time.
 
-![](doc/message.png)
+![](doc/message_en.png)
 
 ## Usage
 
 This app is in notification area. You could add apps to observe.
 
-![](doc/tray.png)
+![](doc/tray_en.png)
 
-![](doc/settings.png)
+![](doc/settings_en.png)
 
 | Kill Method     | Detail                                                       |
 | --------------- | ------------------------------------------------------------ |
