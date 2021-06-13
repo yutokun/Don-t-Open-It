@@ -79,6 +79,15 @@ namespace DontOpenIt.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The app already added..
+        /// </summary>
+        public static string appAlreadyAdded {
+            get {
+                return ResourceManager.GetString("appAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App Name.
         /// </summary>
         public static string appName {

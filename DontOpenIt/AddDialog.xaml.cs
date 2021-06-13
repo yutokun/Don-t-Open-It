@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Interop;
 
 namespace DontOpenIt
@@ -18,6 +21,8 @@ namespace DontOpenIt
         const int WS_MINIMIZEBOX = 0x20000;
         const int WM_SETICON = 0x0080;
 
+        static readonly string[] ExcludedProcesses = { "svchost", "ApplicationFrameworkHost", "audiodg", "BtwRSupportService", "conhost", "csrss", "dllhost", "fontdrvhost", "MSBuild", "MsMpEng", "secd", "sihost", "System", "SystemSettings", "wininit", "winlogon", "WUDFHost" };
+
         public AddDialog()
         {
             InitializeComponent();
@@ -33,12 +38,44 @@ namespace DontOpenIt
             SetWindowLong(handle, WM_SETICON, 0);
         }
 
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            var currentProcesses = Process.GetProcesses()
+                                          .Select(p => p.ProcessName)
+                                          .Distinct()
+                                          .Except(ExcludedProcesses) 
+                                          .Except(Settings.TargetApps)
+                                          .OrderBy(p => p)
+                                          .ToArray();
+            foreach (var process in currentProcesses)
+            {
+                ProcessName.Items.Add(process);
+            }
+
+            if (string.IsNullOrEmpty(ProcessName.Text)) ProcessName.SelectedIndex = 0;
+            ProcessName.Focus();
+        }
+
         void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var owner = (MainWindow)Owner;
-            owner.AppList.Items.Add(new[] { ProcessName.Text, KillMethod.Text });
-            Settings.Data.AddTarget(ProcessName.Text, (KillMethod)Enum.Parse(typeof(KillMethod), KillMethod.Text));
-            Close();
+            var killMethod = (KillMethod)Enum.Parse(typeof(KillMethod), KillMethod.Text);
+            var success = Settings.Data.AddTarget(ProcessName.Text, killMethod);
+            if (success)
+            {
+                ((MainWindow)Owner).AddToAppList(ProcessName.Text, killMethod);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.appAlreadyAdded);
+            }
+        }
+
+        void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) AddButton_Click(sender, e);
+            if (e.Key == Key.Escape) Close();
         }
     }
 }

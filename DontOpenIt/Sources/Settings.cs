@@ -39,6 +39,12 @@ namespace DontOpenIt
                     Save();
                 }
             }
+
+            public void RemoveTarget(int index)
+            {
+                Targets.RemoveAt(index);
+                Save();
+            }
         }
 
         public static Definition Data { get; private set; }

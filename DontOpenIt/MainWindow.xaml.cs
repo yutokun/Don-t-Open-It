@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 
 namespace DontOpenIt
@@ -49,8 +50,18 @@ namespace DontOpenIt
             StopWeekend.IsChecked = Settings.Data.StopWeekend;
             foreach (var target in Settings.Data.Targets)
             {
-                AppList.Items.Add(new[] { target.Name, target.KillMethod.ToString() });
+                AddToAppList(target.Name, target.KillMethod);
             }
+        }
+
+        public void AddToAppList(string name, KillMethod killMethod)
+        {
+            AppList.Items.Add(new { Name = name, KillMethod = killMethod });
+        }
+
+        void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RemoveButton.IsEnabled = AppList.SelectedItem != null;
         }
 
         void AddButton_Click(object sender, RoutedEventArgs e)
@@ -58,6 +69,23 @@ namespace DontOpenIt
             var dialog = new AddDialog();
             dialog.Owner = this;
             dialog.ShowDialog();
+        }
+
+        void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveApp();
+        }
+
+        void MenuItemRemove_OnClick(object sender, RoutedEventArgs e)
+        {
+            RemoveApp();
+        }
+
+        void RemoveApp()
+        {
+            var index = AppList.SelectedIndex;
+            AppList.Items.RemoveAt(index);
+            Settings.Data.RemoveTarget(index);
         }
     }
 }

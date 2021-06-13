@@ -56,4 +56,7 @@
     <data name="add" xml:space="preserve">
         <value>追加</value>
     </data>
+    <data name="appAlreadyAdded" xml:space="preserve">
+        <value>既にそのアプリは登録されています。</value>
+    </data>
 </root>

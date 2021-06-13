@@ -159,4 +159,7 @@
   <data name="add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="appAlreadyAdded" xml:space="preserve">
+    <value>The app already added.</value>
+  </data>
 </root>
