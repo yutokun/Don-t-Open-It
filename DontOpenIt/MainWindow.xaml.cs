@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -52,6 +54,8 @@ namespace DontOpenIt
             {
                 AddToAppList(target.Name, target.KillMethod);
             }
+
+            Title = $"Don't Open It v{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion}";
         }
 
         public void AddToAppList(string name, KillMethod killMethod)
