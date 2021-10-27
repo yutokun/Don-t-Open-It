@@ -91,5 +91,42 @@ namespace DontOpenIt
             AppList.Items.RemoveAt(index);
             Settings.Data.RemoveTarget(index);
         }
+
+        void StopWeekend_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (StopWeekend.IsChecked.HasValue)
+            {
+                Settings.Data.StopWeekend = StopWeekend.IsChecked.Value;
+                Settings.Save();
+            }
+        }
+
+        void BeginTime_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            var parsed = int.TryParse(BeginTime.Text, out var hour);
+            if (parsed)
+            {
+                Settings.Data.BeginHour = hour;
+                Settings.Save();
+            }
+            else
+            {
+                BeginTime.Text = Settings.Data.BeginHour.ToString();
+            }
+        }
+
+        void EndTime_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            var parsed = int.TryParse(EndTime.Text, out var hour);
+            if (parsed)
+            {
+                Settings.Data.EndHour = hour;
+                Settings.Save();
+            }
+            else
+            {
+                EndTime.Text = Settings.Data.EndHour.ToString();
+            }
+        }
     }
 }

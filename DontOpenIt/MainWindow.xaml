@@ -39,11 +39,14 @@
             <GroupBox Header="{x:Static properties:Resources.timeToWatch}" Margin="0 0 0 10">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                        <TextBox x:Name="BeginTime" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="BeginTime" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                 LostFocus="BeginTime_OnLostFocus" />
                         <Label Content="～" />
-                        <TextBox x:Name="EndTime" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="EndTime" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                 LostFocus="EndTime_OnLostFocus" />
                     </StackPanel>
-                    <CheckBox Name="StopWeekend" Content="{x:Static properties:Resources.watchAllDayOnWeekend}" />
+                    <CheckBox Name="StopWeekend" Content="{x:Static properties:Resources.watchAllDayOnWeekend}"
+                              Click="StopWeekend_OnClick" />
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="{x:Static properties:Resources.appsToWatch}">
