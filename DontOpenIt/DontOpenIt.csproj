@@ -51,6 +51,7 @@
         <Reference Include="PresentationFramework" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Sources\ProcessWatcher.cs" />
         <Page Include="AddDialog.xaml" />
         <Page Include="App.xaml">
             <Generator>MSBuild:Compile</Generator>

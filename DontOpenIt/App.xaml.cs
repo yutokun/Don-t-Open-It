@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using ProcessWatcher;
 using MessageBox = System.Windows.MessageBox;
 using MessageBoxOptions = System.Windows.MessageBoxOptions;
 
@@ -27,53 +26,57 @@ namespace DontOpenIt
             app.Run();
         }
 
-        static void Start(object sender, StartupEventArgs e)
+        static async void Start(object sender, StartupEventArgs e)
         {
             Settings.Load();
             Notifier.Create();
 
-            var watchdog = new Watchdog();
-            watchdog.Attach(OnProcessCreated, out _);
-            watchdog.Run();
+            var watcher = new ProcessWatcher();
+            watcher.OnNewProcessLaunch += OnProcessCreated;
+            await watcher.Run();
         }
 
-        static async void OnProcessCreated(Process process)
+        static async void OnProcessCreated(IEnumerable<string> processes)
         {
             if (Mute) return;
-            Console.WriteLine(process.ProcessName);
-            if (Settings.TargetApps.Contains(process.ProcessName) && !Confirming.Contains(process.ProcessName))
+
+            foreach (var process in processes)
             {
-                Confirming.Add(process.ProcessName);
-
-                await Task.Run(() =>
+                Debug.WriteLine(process);
+                if (Settings.TargetApps.Contains(process) && !Confirming.Contains(process))
                 {
-                    var timeFrame = Time.GetTimeFrame();
-                    if (timeFrame == TimeFrame.Working) return;
+                    Confirming.Add(process);
 
-                    var yes = ConfirmOpen(timeFrame, process.ProcessName);
-                    if (!yes)
+                    await Task.Run(() =>
                     {
-                        var processes = Process.GetProcessesByName(process.ProcessName);
-                        foreach (var p in processes)
+                        var timeFrame = Time.GetTimeFrame();
+                        if (timeFrame == TimeFrame.Working) return;
+
+                        var yes = ConfirmOpen(timeFrame, process);
+                        if (!yes)
                         {
-                            switch (Settings.GetTarget(process.ProcessName).KillMethod)
+                            var processes = Process.GetProcessesByName(process);
+                            foreach (var p in processes)
                             {
-                                case KillMethod.CloseMainWindow:
-                                    p.CloseMainWindow();
-                                    break;
+                                switch (Settings.GetTarget(process).KillMethod)
+                                {
+                                    case KillMethod.CloseMainWindow:
+                                        p.CloseMainWindow();
+                                        break;
 
-                                case KillMethod.Kill:
-                                    p.Kill();
-                                    break;
+                                    case KillMethod.Kill:
+                                        p.Kill();
+                                        break;
 
-                                default:
-                                    throw new ArgumentOutOfRangeException();
+                                    default:
+                                        throw new ArgumentOutOfRangeException();
+                                }
                             }
                         }
-                    }
 
-                    Confirming.Remove(process.ProcessName);
-                });
+                        Confirming.Remove(process);
+                    });
+                }
             }
         }
 
