@@ -65,4 +65,8 @@
     <data name="kill" xml:space="preserve">
         <value>強制終了</value>
     </data>
+    <data name="killMethodHelp" xml:space="preserve">
+        <value>アプリに終了するよう要求：アプリに通常の手順で終了するよう要求します。一部のアプリで機能しないことがあります。
+強制終了：強制的に終了します。その後のアプリの動作に支障をきたす場合があります。</value>
+    </data>
 </root>

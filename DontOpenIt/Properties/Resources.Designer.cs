@@ -142,6 +142,16 @@ namespace DontOpenIt.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request to exit: Requests the app to exit in the normal way. This may not work for some apps.
+        ///Force Quit: Quits the app forcibly. This may interfere with the subsequent operation of the app..
+        /// </summary>
+        public static string killMethodHelp {
+            get {
+                return ResourceManager.GetString("killMethodHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Launch on login.
         /// </summary>
         public static string launchOnLogin {

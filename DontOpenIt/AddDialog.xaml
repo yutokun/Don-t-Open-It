@@ -34,6 +34,7 @@
                     <ComboBoxItem Content="{x:Static properties:Resources.requestToExit}" />
                     <ComboBoxItem Content="{x:Static properties:Resources.kill}" />
                 </ComboBox>
+                <Button Content="?" Width="26" Height="26" Margin="10,0,0,0" VerticalAlignment="Top" Click="HelpButton_OnClick" />
             </StackPanel>
             <Button Content="{x:Static properties:Resources.add}" Width="50" Click="AddButton_Click" />
         </StackPanel>

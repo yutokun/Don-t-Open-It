@@ -77,5 +77,10 @@ namespace DontOpenIt
             if (e.Key == Key.Enter) AddButton_Click(sender, e);
             if (e.Key == Key.Escape) Close();
         }
+
+        void HelpButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Properties.Resources.killMethodHelp, "Help");
+        }
     }
 }
