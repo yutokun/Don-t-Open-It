@@ -16,7 +16,7 @@ namespace DontOpenIt
         {
             var dayOfWeek = DateTime.Now.DayOfWeek;
 
-            if (Settings.Data.StopWeekend && dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
+            if (Settings.Data.StopWeekend && (dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday))
             {
                 return TimeFrame.Weekend;
             }
